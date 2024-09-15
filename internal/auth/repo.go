@@ -16,6 +16,7 @@ func NewRepo(db *sql.DB) *Repo {
 }
 
 func (repo *Repo) GetUserByEmail(email string) (*User, error) {
+	log.Printf("start getting user by email: %s", email)
 	stmt := `select id, email, password, password_salt, create_at from users where email = $1`
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*5)
 	defer cancel()

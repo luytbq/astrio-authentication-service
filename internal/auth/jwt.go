@@ -43,7 +43,7 @@ func randStringRunes(n int) string {
 	return string(b)
 }
 
-func createJWTToken(claims map[string]any) (string, error) {
+func CreateJWTToken(claims map[string]any) (string, error) {
 	key := config.App.HMAC_KEY
 
 	mapClaims := jwt.MapClaims(claims)
@@ -63,7 +63,7 @@ func createJWTToken(claims map[string]any) (string, error) {
 	return str, nil
 }
 
-func parseJWTToken(tokenString string) (jwt.MapClaims, error) {
+func ParseJWTToken(tokenString string) (jwt.MapClaims, error) {
 	key := []byte(config.App.HMAC_KEY)
 
 	// Parse the token

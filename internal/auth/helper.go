@@ -10,6 +10,10 @@ import (
 	"github.com/luytbq/astrio-authentication-service/pkg/auth"
 )
 
+const (
+	KEY_AUTH_TOKEN = "Astrio-Auth-Token"
+)
+
 func validateRegisterPayload(payload auth.RegisterPayload) error {
 	_, err := mail.ParseAddress(payload.Email)
 	if err != nil {
@@ -33,7 +37,7 @@ func nomarlizeEmail(email string) string {
 		return email
 	}
 
-	local := arr[0]
+	local := strings.ToLower(arr[0])
 	domain := strings.ToLower(arr[1])
 
 	replaceDots := strings.ReplaceAll(local, ".", "")
