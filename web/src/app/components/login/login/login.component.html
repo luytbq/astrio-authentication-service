@@ -1,0 +1,16 @@
+<div class="container">
+    <form class="form" [formGroup]="formGroup" (submit)="submit()">
+        <div class="input-group">
+            <label for="">Email</label>
+            <input type="email" name="email" formControlName="email"/>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" formControlName="password"/>
+        </div>
+        <p class="error" *ngIf="errorMsg?.length">{{errorMsg}}</p>
+        <div class="actions">
+            <button (click1)="submit()">Login</button>
+        </div>
+    </form>
+</div>
