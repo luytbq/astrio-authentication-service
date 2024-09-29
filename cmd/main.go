@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 
-	_ "github.com/lib/pq"
 	"github.com/luytbq/astrio-authentication-service/cmd/api"
 	"github.com/luytbq/astrio-authentication-service/config"
 	"github.com/luytbq/astrio-authentication-service/internal/database"

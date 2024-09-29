@@ -132,7 +132,7 @@ func (h *Handler) handleVerify(c *gin.Context) {
 	authHeader := c.Request.Header.Get(KEY_AUTH_TOKEN)
 	if authHeader == "" {
 		log.Printf("auth token is empty")
-		common.Response(c, http.StatusInternalServerError,
+		common.Response(c, http.StatusBadRequest,
 			pauth.GeneralResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusBadRequest, Message: "Request header missing: " + KEY_AUTH_TOKEN}})
 		return
 
@@ -144,8 +144,8 @@ func (h *Handler) handleVerify(c *gin.Context) {
 
 	if err != nil {
 		log.Printf("error: %s", err.Error())
-		common.Response(c, http.StatusInternalServerError,
-			pauth.GeneralResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusInternalServerError, Message: "some thing went wrong"}})
+		common.Response(c, http.StatusBadRequest,
+			pauth.GeneralResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusBadRequest, Message: err.Error()}})
 		return
 	}
 
