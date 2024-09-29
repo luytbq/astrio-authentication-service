@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit{
 
   formGroup = new FormGroup(
     {
-      email: new FormControl(''),
-      password: new FormControl('')
+      email: new FormControl('luytbq43@gmail.com'),
+      password: new FormControl('password123')
     }
   );
 
@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit{
     this.auth.postLogin(this.formGroup.value).subscribe(
       res => {
         console.log('login', res)
+        console.log(res.headers.get('Astrio-Auth-Token'))
+        this.auth.saveToken(res.headers.get('Astrio-Auth-Token'));
       }, (error) => {
         this.errorMsg = error.error?.error?.message || 'something went wrong'
         console.error('login', error);

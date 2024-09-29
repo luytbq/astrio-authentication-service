@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login/login.component';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import CookieService from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
     declarations: [
@@ -18,7 +18,7 @@ import CookieService from 'ngx-cookie-service';
         ReactiveFormsModule],
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
-        // CookieService
+        CookieService
     ]
 })
 export class AppModule { }
