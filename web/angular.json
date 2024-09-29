@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "aas-web:build:production"
+              "buildTarget": "aas-web:build:production"
             },
             "development": {
-              "browserTarget": "aas-web:build:development"
+              "buildTarget": "aas-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "aas-web:build"
+            "buildTarget": "aas-web:build"
           }
         },
         "test": {
