@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit{
 
   formGroup = new FormGroup(
     {
-      email: new FormControl('luytbq43@gmail.com'),
-      password: new FormControl('password123')
+      email: new FormControl(''),
+      password: new FormControl('')
     }
   );
 
