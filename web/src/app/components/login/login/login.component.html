@@ -26,6 +26,8 @@
                     autocomplete="new-password" formControlName="password" />
             </label>
 
+            <p class="mt-6 error" *ngIf="errorMsg"> {{errorMsg}}</p>
+
             <div class="form-control mt-6">
                 <button class="w-full rounded p-3 bg-primary">Login</button>
             </div>

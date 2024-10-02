@@ -25,6 +25,7 @@ type LoginPayload struct {
 
 type LoginResponse struct {
 	*ErrorResponse `json:"error,omitempty"`
+	Email          string `json:"email,omitempty"`
 }
 
 type GeneralResponse struct {

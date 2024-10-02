@@ -1,0 +1,10 @@
+<div class="w-full h-screen grid place-content-center">
+    <div class="p-6 space-y-4 md:space-y-6 sm:p-8 w-full md:max-w-md mx-auto rounded-lg bg-dark-800 border border-dark-600">
+        @if (isLoggedIn) {
+            <h2>{{user.email}}</h2>
+            <h2>Welcome back!</h2>
+        } @else {
+            <h2>Please <a class="text-blue font-medium" href="" [routerLink]="['/login']">click here</a> to log in.</h2>
+        }
+    </div>
+</div>

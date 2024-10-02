@@ -94,13 +94,13 @@ func (h *Handler) handleLogin(c *gin.Context) {
 	if err != nil {
 		log.Printf("error: %s", err.Error())
 		common.Response(c, http.StatusInternalServerError,
-			pauth.RegisterResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusInternalServerError, Message: "some thing went wrong"}})
+			pauth.LoginResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusInternalServerError, Message: "some thing went wrong"}})
 		return
 	}
 
 	if user == nil {
 		common.Response(c, http.StatusUnauthorized,
-			pauth.RegisterResponse{ErrorResponse: &pauth.ErrorResponse{Message: "invalid email or password"}})
+			pauth.LoginResponse{ErrorResponse: &pauth.ErrorResponse{Message: "invalid email or password"}})
 		return
 	}
 
@@ -108,7 +108,7 @@ func (h *Handler) handleLogin(c *gin.Context) {
 
 	if !verified {
 		common.Response(c, http.StatusUnauthorized,
-			pauth.RegisterResponse{ErrorResponse: &pauth.ErrorResponse{Message: "invalid email or password"}})
+			pauth.LoginResponse{ErrorResponse: &pauth.ErrorResponse{Message: "invalid email or password"}})
 		return
 	}
 
@@ -120,12 +120,12 @@ func (h *Handler) handleLogin(c *gin.Context) {
 	if err != nil {
 		log.Printf("error: %s", err.Error())
 		common.Response(c, http.StatusInternalServerError,
-			pauth.RegisterResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusInternalServerError, Message: "some thing went wrong"}})
+			pauth.LoginResponse{ErrorResponse: &pauth.ErrorResponse{Code: http.StatusInternalServerError, Message: "some thing went wrong"}})
 		return
 	}
 
 	c.Header(KEY_AUTH_TOKEN, "Bearer "+token)
-	c.Status(http.StatusOK)
+	common.Response(c, http.StatusOK, pauth.LoginResponse{Email: user.Email})
 }
 
 func (h *Handler) handleVerify(c *gin.Context) {

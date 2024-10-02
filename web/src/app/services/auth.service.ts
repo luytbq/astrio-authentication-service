@@ -13,7 +13,25 @@ export class AuthService {
     private cookieService: CookieService,
   ) { }
 
-  serviceUrl: string = environment.aas_service.url;
+  private serviceUrl: string = environment.aas_service.url;
+  private _user: User = {
+    email: GUEST
+  };
+
+  private _isloggedIn = false;
+
+  get user(): User {
+    return this._user;
+  }
+
+  set user(user: User) {
+    this._user = user;
+    this._isloggedIn = this._user.email != GUEST;
+  }
+
+  get isLoggedIn(): boolean {
+    return this._isloggedIn
+  }
 
   public postLogin(body: any): Observable<HttpResponse<any>> {
     return this.http.post(this.serviceUrl+'/login', body, {observe: 'response'});
@@ -24,4 +42,11 @@ export class AuthService {
     token = token.replaceAll('Bearer ', '');
     token && this.cookieService.set('auth', token, 7, "/");
   }
+
 }
+
+export interface User {
+  email?: string
+}
+
+export const GUEST = 'guest';

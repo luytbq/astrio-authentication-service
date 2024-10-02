@@ -6,16 +6,22 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms'
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './components/welcome/welcome/welcome.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        WelcomeComponent
     ],
     bootstrap: [AppComponent],
-    imports: [AppRoutingModule,
+    imports: [
+        AppRoutingModule,
         BrowserModule,
-        ReactiveFormsModule],
+        ReactiveFormsModule,
+        RouterModule,
+    ],
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
         CookieService
