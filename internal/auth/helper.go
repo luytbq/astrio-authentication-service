@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	KEY_AUTH_TOKEN = "Astrio-Auth-Token"
+	KEY_AUTH_TOKEN = "Authorization"
 )
 
 func validateRegisterPayload(payload auth.RegisterPayload) error {

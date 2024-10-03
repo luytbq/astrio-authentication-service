@@ -25,7 +25,7 @@ func (h *Handler) RegisterRoutes(r *gin.Engine) {
 	path := config.App.SERVER_API_PREFIX + "/api/v1/users"
 	r.POST(path, h.handleRegister)
 	r.POST(path+"/login", h.handleLogin)
-	r.GET(path+"/verify", h.handleVerify)
+	r.GET(path+"/infos", h.handleGetInfos)
 }
 
 func (h *Handler) handleRegister(c *gin.Context) {
@@ -128,7 +128,7 @@ func (h *Handler) handleLogin(c *gin.Context) {
 	common.Response(c, http.StatusOK, pauth.LoginResponse{Email: user.Email})
 }
 
-func (h *Handler) handleVerify(c *gin.Context) {
+func (h *Handler) handleGetInfos(c *gin.Context) {
 	authHeader := c.Request.Header.Get(KEY_AUTH_TOKEN)
 	if authHeader == "" {
 		log.Printf("auth token is empty")
