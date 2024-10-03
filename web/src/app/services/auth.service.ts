@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
     private cookieService: CookieService,
   ) { }
 
-  private serviceUrl: string = environment.aas_service.url;
+  private serviceUrl: string = environment.aas.service_url;
   private _user: User = {
     email: GUEST
   };
@@ -34,10 +34,11 @@ export class AuthService {
   }
 
   public postLogin(body: any): Observable<HttpResponse<any>> {
-    return this.http.post(this.serviceUrl+'/login', body, {observe: 'response'});
+    return this.http.post(this.serviceUrl+'/users/login', body, {observe: 'response'});
   }
 
   public saveToken(token: string | null) {
+    debugger;
     if (!token) return;
     token = token.replaceAll('Bearer ', '');
     token && this.cookieService.set('auth', token, 7, "/");

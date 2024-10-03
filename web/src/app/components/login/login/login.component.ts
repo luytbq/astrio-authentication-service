@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   submit() {
     this.auth.postLogin(this.formGroup.value).subscribe(
       res => {
-        this.auth.saveToken(res.headers.get('Astrio-Auth-Token'));
+        this.auth.saveToken(res.headers.get('Authorization'));
 
         this.auth.user = {
           email: res.body.email
