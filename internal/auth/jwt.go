@@ -48,7 +48,7 @@ func CreateJWTToken(claims map[string]any) (string, error) {
 
 	mapClaims := jwt.MapClaims(claims)
 	mapClaims["iat"] = jwt.NumericDate{Time: time.Now()}
-	mapClaims["exp"] = jwt.NumericDate{Time: time.Now().Add(time.Hour * 12)}
+	mapClaims["exp"] = jwt.NumericDate{Time: time.Now().Add(time.Hour * 1)}
 
 	v, _ := mapClaims.GetExpirationTime()
 	log.Printf("exp: %+v", v)

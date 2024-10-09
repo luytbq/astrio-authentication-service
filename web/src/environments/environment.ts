@@ -4,4 +4,3 @@ export const environment = {
         service_url: 'http://localhost/aas/api/v1'
     }
 };
-

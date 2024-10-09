@@ -38,7 +38,6 @@ export class AuthService {
   }
 
   public saveToken(token: string | null) {
-    debugger;
     if (!token) return;
     token = token.replaceAll('Bearer ', '');
     token && this.cookieService.set('auth', token, 7, "/");
